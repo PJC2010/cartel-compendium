@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+import { getFigures, getFactions, getCartels } from '../lib/data';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+
+const searchIndex = getFigures().map((f) => {
+  const faction = getFactions().find((fa) => fa.id === f.faction_id);
+  const cartel = getCartels().find((c) => c.id === f.cartel_id);
+  return {
+    id: f.id,
+    name: f.name,
+    alias: f.alias,
+    role: f.role,
+    status: f.status,
+    faction_name: faction?.name || '',
+    cartel_name: cartel?.name || '',
+    image: f.images[0]?.src || null,
+  };
+});
+const searchIndexJson = JSON.stringify(searchIndex);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description || 'A compendium of Mexican drug cartels, their factions, and key figures.'} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} — Cartel Compendium</title>
+  </head>
+  <body class="min-h-dvh flex flex-col">
+    <header class="sticky top-0 z-50 bg-bg-primary/90 backdrop-blur-md border-b border-border">
+      <nav class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
+        <a href="/" class="font-display font-bold text-lg tracking-tight text-text-primary shrink-0">
+          Cartel Compendium
+        </a>
+        <div class="flex-1 max-w-sm hidden sm:block">
+          <!-- Search will be placed on homepage directly -->
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-border py-6 text-center text-xs text-text-muted">
+      <div class="max-w-6xl mx-auto px-4">
+        Cartel Compendium — For research and educational purposes only.
+      </div>
+    </footer>
+
+    <script>
+      window.__FIGURE_SEARCH_INDEX__ = {searchIndexJson};
+    </script>
+  </body>
+</html>

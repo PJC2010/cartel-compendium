@@ -1,0 +1,48 @@
+---
+export interface Props {
+  id: string;
+  name: string;
+  alias?: string;
+  founded: string;
+  status: 'active' | 'dismantled' | 'fragmented';
+  description: string;
+  image: string;
+}
+const { id, name, alias, founded, status, description, image } = Astro.props;
+
+const statusColors: Record<string, string> = {
+  active: 'bg-badge-active',
+  dismantled: 'bg-badge-deceased',
+  fragmented: 'bg-badge-imprisoned',
+};
+---
+
+<a
+  href={`/cartel/${id}`}
+  class="group block bg-bg-card border border-border rounded-lg overflow-hidden
+         hover:bg-bg-card-hover hover:border-text-muted/30 transition-all duration-200
+         focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+>
+  <div class="aspect-[16/9] bg-bg-secondary overflow-hidden">
+    <img
+      src={image}
+      alt={name}
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <div class="p-4">
+    <div class="flex items-start justify-between gap-2 mb-1.5">
+      <h3 class="font-display font-semibold text-base text-text-primary group-hover:text-accent-hover transition-colors">
+        {name}
+      </h3>
+      <span class={`shrink-0 px-2 py-0.5 rounded-full text-[11px] font-medium text-white ${statusColors[status]}`}>
+        {status}
+      </span>
+    </div>
+    {alias && <p class="text-xs text-text-secondary mb-1">{alias}</p>}
+    <p class="text-xs text-text-muted">Founded {founded}</p>
+    <p class="text-sm text-text-secondary mt-2 line-clamp-2">{description}</p>
+  </div>
+</a>

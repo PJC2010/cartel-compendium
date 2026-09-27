@@ -1,0 +1,121 @@
+---
+// Client-side search component
+---
+
+<div class="relative w-full max-w-md" id="search-container">
+  <div class="relative">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input
+      type="search"
+      id="search-input"
+      placeholder="Search figures..."
+      autocomplete="off"
+      class="w-full bg-bg-card border border-border rounded-lg pl-9 pr-3 py-2 text-sm text-text-primary
+             placeholder:text-text-muted focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/30
+             transition-colors"
+    />
+  </div>
+  <div
+    id="search-results"
+    class="absolute top-full mt-2 left-0 right-0 bg-bg-card border border-border rounded-lg shadow-xl overflow-hidden hidden z-50 max-h-80 overflow-y-auto"
+  >
+  </div>
+</div>
+
+<script>
+  interface FigureIndex {
+    id: string;
+    name: string;
+    alias?: string;
+    role: string;
+    status: string;
+    faction_name: string;
+    cartel_name: string;
+    image?: string;
+  }
+
+  // Build search index from the JSON data exposed on window
+  const index: FigureIndex[] = (window as any).__FIGURE_SEARCH_INDEX__ || [];
+
+  const input = document.getElementById('search-input') as HTMLInputElement;
+  const results = document.getElementById('search-results') as HTMLDivElement;
+
+  if (!input || !results) throw new Error('Search elements missing');
+
+  function fuzzyMatch(query: string, text: string): boolean {
+    const q = query.toLowerCase();
+    const t = text.toLowerCase();
+    return t.includes(q);
+  }
+
+  function search(query: string): FigureIndex[] {
+    if (query.length < 2) return [];
+    const q = query.toLowerCase();
+    return index.filter(
+      (f) =>
+        fuzzyMatch(q, f.name) ||
+        (f.alias && fuzzyMatch(q, f.alias)) ||
+        fuzzyMatch(q, f.role) ||
+        fuzzyMatch(q, f.faction_name) ||
+        fuzzyMatch(q, f.cartel_name)
+    ).slice(0, 8);
+  }
+
+  function renderResults(items: FigureIndex[]) {
+    if (items.length === 0) {
+      results.innerHTML = '<div class="px-4 py-3 text-sm text-text-muted">No results</div>';
+      results.classList.remove('hidden');
+      return;
+    }
+    results.innerHTML = items
+      .map(
+        (f) => `
+      <a href="/figure/${f.id}" class="flex items-center gap-3 px-4 py-3 hover:bg-bg-card-hover transition-colors border-b border-border last:border-b-0">
+        ${f.image
+          ? `<img src="${f.image}" alt="" class="w-10 h-10 rounded object-cover shrink-0 bg-bg-secondary" />`
+          : `<div class="w-10 h-10 rounded bg-bg-secondary shrink-0 flex items-center justify-center text-text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>`
+        }
+        <div class="min-w-0 flex-1">
+          <p class="text-sm font-medium text-text-primary truncate">${f.name}</p>
+          ${f.alias ? `<p class="text-xs text-text-muted truncate">"${f.alias}"</p>` : ''}
+          <p class="text-[11px] text-text-muted truncate">${f.faction_name} · ${f.cartel_name}</p>
+        </div>
+      </a>`
+      )
+      .join('');
+    results.classList.remove('hidden');
+  }
+
+  let debounceTimer: ReturnType<typeof setTimeout>;
+  input.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      const q = input.value.trim();
+      if (q.length < 2) {
+        results.classList.add('hidden');
+        return;
+      }
+      renderResults(search(q));
+    }, 150);
+  });
+
+  input.addEventListener('focus', () => {
+    const q = input.value.trim();
+    if (q.length >= 2) renderResults(search(q));
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!(e.target as HTMLElement).closest('#search-container')) {
+      results.classList.add('hidden');
+    }
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      results.classList.add('hidden');
+      input.blur();
+    }
+  });
+</script>

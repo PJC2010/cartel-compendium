@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FigureHero from '../../components/FigureHero.astro';
+import ImageGallery from '../../components/ImageGallery.astro';
+import EventTimeline from '../../components/EventTimeline.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getFigures, getFigure, getFaction, getCartel } from '../../lib/data';
+
+export function getStaticPaths() {
+  return getFigures().map((f) => ({ params: { id: f.id } }));
+}
+
+const { id } = Astro.params;
+const figure = getFigure(id as string);
+
+if (!figure) {
+  return Astro.redirect('/404');
+}
+
+const faction = getFaction(figure.faction_id);
+const cartel = getCartel(figure.cartel_id);
+---
+
+<Layout title={figure.name}>
+  <Breadcrumbs
+    items={[
+      { label: 'Home', href: '/' },
+      ...(cartel ? [{ label: cartel.name, href: `/cartel/${cartel.id}` }] : []),
+      ...(faction ? [{ label: faction.name, href: `/faction/${faction.id}` }] : []),
+      { label: figure.name },
+    ]}
+  />
+  <FigureHero figure={figure} />
+
+  <div class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2 space-y-8">
+      <section class="bg-bg-card border border-border rounded-lg p-5 sm:p-6">
+        <h2 class="font-display font-semibold text-lg text-text-primary mb-3">Biography</h2>
+        <div class="text-sm text-text-secondary leading-relaxed whitespace-pre-line">
+          {figure.biography}
+        </div>
+      </section>
+
+      <section class="bg-bg-card border border-border rounded-lg p-5 sm:p-6">
+        <EventTimeline events={figure.major_events} />
+      </section>
+    </div>
+
+    <aside class="space-y-6">
+      <section class="bg-bg-card border border-border rounded-lg p-5 sm:p-6">
+        <ImageGallery images={figure.images} figureName={figure.name} />
+      </section>
+
+      <section class="bg-bg-card border border-border rounded-lg p-5 sm:p-6 space-y-3">
+        <h2 class="font-display font-semibold text-base text-text-primary">Details</h2>
+        <dl class="space-y-3 text-sm">
+          {figure.alias && (
+            <div>
+              <dt class="text-text-muted mb-0.5">Alias</dt>
+              <dd class="text-text-secondary">"{figure.alias}"</dd>
+            </div>
+          )}
+          <div>
+            <dt class="text-text-muted mb-0.5">Role</dt>
+            <dd class="text-text-secondary">{figure.role}</dd>
+          </div>
+          {figure.dob && (
+            <div>
+              <dt class="text-text-muted mb-0.5">Born</dt>
+              <dd class="text-text-secondary">{figure.dob}</dd>
+            </div>
+          )}
+          <div>
+            <dt class="text-text-muted mb-0.5">Status</dt>
+            <dd class="text-text-secondary capitalize">{figure.status}</dd>
+          </div>
+          {cartel && (
+            <div>
+              <dt class="text-text-muted mb-0.5">Cartel</dt>
+              <dd><a href={`/cartel/${cartel.id}`} class="text-accent hover:text-accent-hover transition-colors">{cartel.name}</a></dd>
+            </div>
+          )}
+          {faction && (
+            <div>
+              <dt class="text-text-muted mb-0.5">Faction</dt>
+              <dd><a href={`/faction/${faction.id}`} class="text-accent hover:text-accent-hover transition-colors">{faction.name}</a></dd>
+            </div>
+          )}
+        </dl>
+      </section>
+    </aside>
+  </div>
+</Layout>

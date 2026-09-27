@@ -1,0 +1,190 @@
+[
+  {
+    "id": "ivan-guzman",
+    "name": "Iván Archivaldo Guzmán Salazar",
+    "alias": "El Chapito",
+    "role": "Leader of Los Chapitos faction, Sinaloa Cartel",
+    "faction_id": "los-chapitos",
+    "cartel_id": "sinaloa",
+    "status": "wanted",
+    "dob": "1983",
+    "biography": "Eldest son of Joaquín 'El Chapo' Guzmán Loera and his first wife, María Alejandrina Salazar Hernández. Iván Archivaldo rose to prominence within the Sinaloa Cartel alongside his brothers following their father's third arrest in 2016 and subsequent extradition to the United States in 2017.\n\nAs the presumed head of Los Chapitos, Iván is believed to oversee the cartel's fentanyl production and trafficking operations, which have expanded dramatically under his watch. He is considered the most strategic and business-minded of the Guzmán brothers.\n\nIván was indicted by the U.S. Department of Justice in 2023 on charges of drug trafficking, continuing criminal enterprise, and firearms offenses. The State Department has offered a reward of up to $10 million for information leading to his arrest.",
+    "images": [
+      { "src": "/images/figures/ivan-guzman.jpg", "caption": "U.S. Department of State wanted poster" }
+    ],
+    "major_events": [
+      { "date": "2016-01-08", "event": "Father Joaquín 'El Chapo' Guzmán recaptured in Los Mochis, Sinaloa; Iván and brothers begin assuming greater operational control of the cartel." },
+      { "date": "2019-10-17", "event": "The 'Culiacanazo' — Sinaloa Cartel forces overwhelm Mexican National Guard and army units in Culiacán, forcing the government to release Iván's brother Ovidio to avoid civilian casualties." },
+      { "date": "2021-12-15", "event": "U.S. Department of Treasury sanctions Iván Archivaldo and his brothers under the Foreign Narcotics Kingpin Designation Act." },
+      { "date": "2023-01-05", "event": "Brother Ovidio Guzmán captured in Jesús María, Sinaloa, in an operation that left 29 dead. Iván reportedly assumes full operational control of the faction." },
+      { "date": "2023-04-14", "event": "U.S. Department of Justice unseals sweeping indictments against Iván and his brothers, charging them with fentanyl trafficking and the use of firearms in drug crimes." },
+      { "date": "2024-07-25", "event": "Ismael 'El Mayo' Zambada arrested in El Paso, Texas alongside Joaquín Guzmán López (Iván's brother), dramatically shifting Sinaloa Cartel power dynamics." }
+    ]
+  },
+  {
+    "id": "jesus-alfredo-guzman",
+    "name": "Jesús Alfredo Guzmán Salazar",
+    "alias": "Alfredillo",
+    "role": "Senior member of Los Chapitos, Sinaloa Cartel",
+    "faction_id": "los-chapitos",
+    "cartel_id": "sinaloa",
+    "status": "wanted",
+    "dob": "1986",
+    "biography": "Second son of El Chapo, Jesús Alfredo plays a key operational role within Los Chapitos. He is believed to manage a significant portion of the faction's logistics, including the transportation and distribution of narcotics from Sinaloa to border crossing points.\n\nJesús Alfredo was also indicted alongside his brothers in the 2023 U.S. federal indictment on drug trafficking and firearms charges.",
+    "images": [
+      { "src": "/images/figures/jesus-alfredo.jpg", "caption": "U.S. Department of State wanted poster" }
+    ],
+    "major_events": [
+      { "date": "2016-01-08", "event": "Briefly detained with his father during the Los Mochis raid but released due to lack of evidence." },
+      { "date": "2016-08-15", "event": "Kidnapped from a restaurant in Puerto Vallarta, Jalisco, along with his brother Iván, by presumed CJNG gunmen in what became known as 'La Leche' incident. Released days later under unclear circumstances." },
+      { "date": "2023-04-14", "event": "Indicted in the U.S. on drug trafficking, continuing criminal enterprise, and firearms charges." }
+    ]
+  },
+  {
+    "id": "ovidio-guzman",
+    "name": "Ovidio Guzmán López",
+    "alias": "El Ratón",
+    "role": "Former senior member of Los Chapitos, Sinaloa Cartel",
+    "faction_id": "los-chapitos",
+    "cartel_id": "sinaloa",
+    "status": "extradited",
+    "dob": "1990",
+    "biography": "The youngest of the Guzmán brothers involved in cartel operations. Ovidio was arrested in October 2019 in Culiacán but was released hours later after cartel gunmen laid siege to the city — an event known as 'El Culiacanazo'.\n\nHe was recaptured in January 2023 in a predawn raid in Jesús María, Sinaloa, and was extradited to the United States in September 2023. Ovidio pled not guilty to drug trafficking charges in a Chicago federal court and currently awaits trial.",
+    "images": [
+      { "src": "/images/figures/ovidio-guzman.jpg", "caption": "Booking photo following January 2023 arrest" }
+    ],
+    "major_events": [
+      { "date": "2019-10-17", "event": "The Culiacanazo — arrested by Mexican National Guard in Culiacán; hundreds of cartel gunmen surrounded the city, attacking security forces and civilian areas. President López Obrador authorized his release to prevent further bloodshed." },
+      { "date": "2023-01-05", "event": "Recaptured by Mexican security forces in Jesús María, Sinaloa, after a six-month surveillance operation. The raid killed 10 soldiers and 19 cartel operatives." },
+      { "date": "2023-09-15", "event": "Extradited to the United States to face drug trafficking charges in the Northern District of Illinois." }
+    ]
+  },
+  {
+    "id": "el-mayo-zambada",
+    "name": "Ismael 'El Mayo' Zambada García",
+    "alias": "El Mayo",
+    "role": "Co-founder and leader of Los Mayos faction, Sinaloa Cartel",
+    "faction_id": "los-mayos",
+    "cartel_id": "sinaloa",
+    "status": "imprisoned",
+    "dob": "1948",
+    "biography": "The legendary co-founder of the Sinaloa Cartel who evaded capture for over five decades while building one of the most powerful drug trafficking organizations in history. Unlike El Chapo, Zambada operated with extreme discretion, avoiding the limelight while cultivating deep political and law enforcement connections.\n\nZambada was arrested on July 25, 2024, at a private airfield outside El Paso, Texas, under circumstances that remain disputed. Reports suggest he was betrayed and forcibly delivered by Joaquín Guzmán López (El Chapo's son), though Zambada's account claims he was ambushed and kidnapped.\n\nHis arrest has triggered a violent power struggle within the Sinaloa Cartel as factions compete for control of the vast criminal empire he co-built.",
+    "images": [
+      { "src": "/images/figures/el-mayo.jpg", "caption": "Booking photo following July 2024 arrest" }
+    ],
+    "major_events": [
+      { "date": "1989", "event": "Co-founds the Sinaloa Cartel with Joaquín 'El Chapo' Guzmán following the collapse of the Guadalajara Cartel." },
+      { "date": "2010", "event": "Survives violent split with the Beltrán-Leyva brothers, who formed their own organization after blaming Zambada for the arrest of Alfredo Beltrán Leyva." },
+      { "date": "2016", "event": "Following El Chapo's final arrest and extradition, Zambada becomes the undisputed elder statesman of the Sinaloa Cartel." },
+      { "date": "2021", "event": "Reportedly reaches an uneasy power-sharing arrangement with Los Chapitos, dividing the cartel's territories and operations." },
+      { "date": "2024-07-25", "event": "Arrested at a private airfield near El Paso, Texas. Zambada later claims in a public letter that he was ambushed and forcibly delivered by Joaquín Guzmán López." },
+      { "date": "2024-09-09", "event": "Sinaloa Cartel civil war erupts: Los Chapitos and Los Mayos factions begin a violent internal conflict that paralyzes Culiacán and leaves hundreds dead." }
+    ]
+  },
+  {
+    "id": "mayo-flaco",
+    "name": "Ismael Zambada Sicairos",
+    "alias": "Mayo Flaco",
+    "role": "Presumed successor to Los Mayos faction",
+    "faction_id": "los-mayos",
+    "cartel_id": "sinaloa",
+    "status": "wanted",
+    "dob": "1982",
+    "biography": "Son of Ismael 'El Mayo' Zambada and a key figure in the Los Mayos faction. Following his father's arrest, Mayo Flaco has reportedly assumed leadership of the faction's operations, though his control is contested. The U.S. State Department is offering $5 million for information leading to his arrest.",
+    "images": [
+      { "src": "/images/figures/mayo-flaco.jpg", "caption": "DEA wanted poster" }
+    ],
+    "major_events": [
+      { "date": "2024-07-25", "event": "Following his father's arrest, assumes nominal control of Los Mayos operations, though his authority is immediately challenged by rivals within the faction." },
+      { "date": "2024-09-09", "event": "Los Mayos under his command engage in open warfare with Los Chapitos for control of Sinaloa Cartel territory." }
+    ]
+  },
+  {
+    "id": "el-mencho",
+    "name": "Nemesio Oseguera Cervantes",
+    "alias": "El Mencho",
+    "role": "Founder and supreme leader of CJNG",
+    "faction_id": "cjng-elite-group",
+    "cartel_id": "cjng",
+    "status": "wanted",
+    "dob": "1966",
+    "biography": "The most wanted drug lord in Mexico and one of the most violent cartel leaders in history. El Mencho rose from humble origins as an aguacate farmer in Michoacán to become the head of the fastest-growing criminal organization in the Western Hemisphere.\n\nAfter starting his criminal career as a low-level member of the Milenio Cartel, he eventually co-founded CJNG in 2010 following the death of Ignacio 'Nacho' Coronel. Under his leadership, CJNG has become notorious for its use of extreme violence, including the use of rocket-propelled grenades, armored vehicles, and drone attacks.\n\nThe U.S. Drug Enforcement Administration has offered a $10 million reward for information leading to his arrest. He is believed to be hiding in the mountainous regions of Jalisco, Michoacán, and Colima.",
+    "images": [
+      { "src": "/images/figures/el-mencho.jpg", "caption": "DEA Ten Most Wanted poster" }
+    ],
+    "major_events": [
+      { "date": "2010", "event": "Co-founds CJNG after the death of Sinaloa Cartel leader Ignacio 'Nacho' Coronel, taking over his former territory." },
+      { "date": "2015-05-01", "event": "CJNG shoots down a Mexican Army helicopter with an RPG during an operation to capture El Mencho, killing nine soldiers." },
+      { "date": "2018", "event": "Added to the DEA's Ten Most Wanted Fugitives list with a $10 million reward." },
+      { "date": "2021-11-15", "event": "Wife Rosalinda González Valencia arrested on money laundering charges, a significant blow to CJNG's financial operations." },
+      { "date": "2022-02-08", "event": "Reports emerge that El Mencho suffered a serious health crisis possibly related to kidney failure, sparking succession speculation." }
+    ]
+  },
+  {
+    "id": "el-jardinero",
+    "name": "Audias Flores Silva",
+    "alias": "El Jardinero",
+    "role": "Senior CJNG commander and regional chief",
+    "faction_id": "cjng-elite-group",
+    "cartel_id": "cjng",
+    "status": "wanted",
+    "dob": "1980",
+    "biography": "A high-ranking CJNG commander believed to be one of El Mencho's most trusted lieutenants. El Jardinero oversees the cartel's operations in key regions of Jalisco and has been linked to numerous violent confrontations with both rival cartels and Mexican security forces.",
+    "images": [
+      { "src": "/images/figures/el-jardinero.jpg", "caption": "U.S. State Department wanted poster" }
+    ],
+    "major_events": [
+      { "date": "2022", "event": "Indicted by the U.S. Department of Justice on charges of drug trafficking and conspiracy." },
+      { "date": "2023", "event": "Reportedly assumes expanded operational control within CJNG amid El Mencho's reported health issues." }
+    ]
+  },
+  {
+    "id": "el-cholo",
+    "name": "Carlos Enrique Sánchez Martínez",
+    "alias": "El Cholo",
+    "role": "Founder and leader of Nueva Plaza Cartel",
+    "faction_id": "cjng-nueva-plaza",
+    "cartel_id": "cjng",
+    "status": "deceased",
+    "dob": "Unknown",
+    "biography": "A former high-ranking CJNG commander who split from the organization in 2018 to form the Nueva Plaza Cartel. El Cholo led a violent campaign against his former allies in CJNG, attempting to seize control of the lucrative Guadalajara drug market. He was killed in 2021 under circumstances that remain disputed.",
+    "images": [
+      { "src": "/images/figures/el-cholo.jpg", "caption": "Unverified photograph" }
+    ],
+    "major_events": [
+      { "date": "2018", "event": "Splits from CJNG and forms Nueva Plaza Cartel, initiating a bloody turf war in Guadalajara." },
+      { "date": "2021-03-19", "event": "Reportedly killed by CJNG operatives, though his death remains unconfirmed by Mexican authorities." }
+    ]
+  },
+  {
+    "id": "el-conta",
+    "name": "José Alfredo Cárdenas Martínez",
+    "alias": "El Conta",
+    "role": "Leader of CDG Matamoros faction",
+    "faction_id": "cdg-matamoros",
+    "cartel_id": "gulf",
+    "status": "wanted",
+    "dob": "Unknown",
+    "biography": "A longtime Gulf Cartel operative who rose through the ranks of the Matamoros faction. El Conta assumed leadership following years of internal conflict that decimated the cartel's original command structure. He maintains control over the critical Matamoros-Brownsville trafficking corridor.",
+    "images": [],
+    "major_events": [
+      { "date": "2022", "event": "Assumes leadership of the CDG Matamoros faction following the arrest of his predecessor." },
+      { "date": "2023", "event": "Survives an assassination attempt by a rival Gulf Cartel splinter group." }
+    ]
+  },
+  {
+    "id": "escorpion-1",
+    "name": "Comandante Escorpión",
+    "alias": "Escorpión 1",
+    "role": "Senior operational commander, Los Escorpiones",
+    "faction_id": "cdg-escorpiones",
+    "cartel_id": "gulf",
+    "status": "unknown",
+    "dob": "Unknown",
+    "biography": "The operational commander of Los Escorpiones, the Gulf Cartel's primary armed enforcement wing. Very little is known about Escorpión 1's identity, as the group maintains strict operational security. The commander has been implicated in multiple high-profile firefights with Mexican military and federal police forces.",
+    "images": [],
+    "major_events": [
+      { "date": "2023", "event": "Los Escorpiones engage in a series of violent confrontations with the Northeast Cartel for control of Reynosa." }
+    ]
+  }
+]

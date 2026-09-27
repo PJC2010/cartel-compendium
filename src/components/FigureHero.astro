@@ -1,0 +1,61 @@
+---
+import type { Figure } from '../lib/schemas';
+
+export interface Props {
+  figure: Figure;
+}
+const { figure } = Astro.props;
+
+const statusColors: Record<string, string> = {
+  active: 'bg-badge-active',
+  wanted: 'bg-badge-wanted',
+  imprisoned: 'bg-badge-imprisoned',
+  deceased: 'bg-badge-deceased',
+  extradited: 'bg-badge-imprisoned',
+  unknown: 'bg-badge-deceased',
+};
+---
+
+<div class="relative bg-bg-secondary border-b border-border overflow-hidden">
+  <div class="absolute inset-0">
+    {figure.images[0] && (
+      <img
+        src={figure.images[0].src}
+        alt=""
+        class="w-full h-full object-cover opacity-10"
+        aria-hidden="true"
+      />
+    )}
+    <div class="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/70 to-transparent" />
+  </div>
+  <div class="relative max-w-6xl mx-auto px-4 py-10 sm:py-14">
+    <div class="flex items-start gap-4">
+      {figure.images[0] ? (
+        <img
+          src={figure.images[0].src}
+          alt={figure.name}
+          class="w-20 h-20 sm:w-28 sm:h-28 rounded-lg object-cover border-2 border-border shrink-0"
+        />
+      ) : (
+        <div class="w-20 h-20 sm:w-28 sm:h-28 rounded-lg bg-bg-card border-2 border-border shrink-0 flex items-center justify-center text-text-muted">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+      )}
+      <div class="min-w-0">
+        <h1 class="font-display font-bold text-2xl sm:text-3xl text-text-primary mb-1">
+          {figure.name}
+        </h1>
+        {figure.alias && (
+          <p class="text-sm text-text-secondary mb-2">"{figure.alias}"</p>
+        )}
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+          <span class={`px-2.5 py-0.5 rounded-full text-xs font-medium text-white ${statusColors[figure.status]}`}>
+            {figure.status}
+          </span>
+          {figure.dob && <span class="text-xs text-text-muted">Born {figure.dob}</span>}
+        </div>
+        <p class="text-sm text-text-secondary">{figure.role}</p>
+      </div>
+    </div>
+  </div>
+</div>

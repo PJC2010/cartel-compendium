@@ -1,0 +1,35 @@
+[
+  {
+    "id": "sinaloa",
+    "name": "Sinaloa Cartel",
+    "alias": "CDS / Pacific Cartel / Guzmán-Zambada Organization",
+    "founded": "1980s",
+    "founders": ["Joaquín 'El Chapo' Guzmán", "Ismael 'El Mayo' Zambada", "Héctor Luis Palma Salazar"],
+    "status": "active",
+    "description": "One of the oldest and most powerful drug trafficking organizations in Mexico. Founded in the state of Sinaloa, the cartel has dominated the cocaine, heroin, methamphetamine, and fentanyl trade into the United States for decades. Following the arrest and extradition of El Chapo, the organization fractured into several factions, though it remains a dominant force in the Mexican underworld.",
+    "image": "/images/cartels/sinaloa.jpg",
+    "factions": ["los-chapitos", "los-mayos"]
+  },
+  {
+    "id": "cjng",
+    "name": "Jalisco New Generation Cartel",
+    "alias": "CJNG / Los Mata Zetas",
+    "founded": "2010",
+    "founders": ["Nemesio 'El Mencho' Oseguera Cervantes", "Érick Valencia Salazar", "Martín Arzola Ortega"],
+    "status": "active",
+    "description": "One of Mexico's most aggressive and rapidly expanding criminal organizations. Originally formed as a splinter from the Milenio Cartel and later the Sinaloa Cartel, CJNG rose to prominence through extreme violence and territorial expansion. Under El Mencho's leadership, the cartel has become the primary rival to the Sinaloa Cartel, controlling key drug trafficking routes throughout Mexico and maintaining a significant presence in the United States, Europe, and Asia.",
+    "image": "/images/cartels/cjng.jpg",
+    "factions": ["cjng-elite-group", "cjng-nueva-plaza"]
+  },
+  {
+    "id": "gulf",
+    "name": "Gulf Cartel",
+    "alias": "CDG / Osiel Cárdenas Guillén Organization",
+    "founded": "1970s",
+    "founders": ["Juan Nepomuceno Guerra", "Juan García Ábrego"],
+    "status": "fragmented",
+    "description": "One of Mexico's oldest cartels, historically based in Tamaulipas along the Gulf of Mexico. Once a dominant force controlling the Matamoros corridor, the Gulf Cartel has been severely weakened by internal fractures, leadership arrests, and pressure from rivals. It now operates as a fragmented collection of cells that occasionally cooperate but more often fight amongst themselves.",
+    "image": "/images/cartels/gulf.jpg",
+    "factions": ["cdg-matamoros", "cdg-escorpiones"]
+  }
+]

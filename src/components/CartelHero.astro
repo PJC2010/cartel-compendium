@@ -1,0 +1,59 @@
+---
+import type { Cartel } from '../lib/schemas';
+
+export interface Props {
+  cartel: Cartel;
+}
+const { cartel } = Astro.props;
+
+const statusColors: Record<string, string> = {
+  active: 'bg-badge-active',
+  dismantled: 'bg-badge-deceased',
+  fragmented: 'bg-badge-imprisoned',
+};
+---
+
+<div class="relative bg-bg-secondary border-b border-border overflow-hidden">
+  <div class="absolute inset-0">
+    <img
+      src={cartel.image}
+      alt=""
+      class="w-full h-full object-cover opacity-20"
+      aria-hidden="true"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/80 to-transparent" />
+  </div>
+  <div class="relative max-w-6xl mx-auto px-4 py-12 sm:py-16">
+    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+      <div class="flex-1">
+        <h1 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-2">
+          {cartel.name}
+        </h1>
+        {cartel.alias && (
+          <p class="text-sm text-text-secondary mb-3">{cartel.alias}</p>
+        )}
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class={`px-2.5 py-0.5 rounded-full text-xs font-medium text-white ${statusColors[cartel.status]}`}>
+            {cartel.status}
+          </span>
+          <span class="text-xs text-text-muted">Founded {cartel.founded}</span>
+        </div>
+        <p class="text-sm text-text-secondary max-w-2xl leading-relaxed">
+          {cartel.description}
+        </p>
+        {cartel.founders.length > 0 && (
+          <div class="mt-4">
+            <p class="text-xs text-text-muted uppercase tracking-wider mb-1.5">Founders</p>
+            <div class="flex flex-wrap gap-1.5">
+              {cartel.founders.map((founder) => (
+                <span class="px-2.5 py-1 bg-bg-card border border-border rounded-md text-xs text-text-secondary">
+                  {founder}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</div>

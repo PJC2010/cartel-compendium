@@ -1,0 +1,229 @@
+---
+export interface Props {
+  images: { src: string; caption?: string }[];
+  figureName: string;
+}
+const { images, figureName } = Astro.props;
+---
+
+<div class="space-y-2">
+  <h2 class="font-display font-semibold text-lg text-text-primary">Images</h2>
+  {images.length === 0 ? (
+    <p class="text-sm text-text-muted italic">No images available.</p>
+  ) : (
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3" id="gallery-grid">
+      {images.map((img, idx) => (
+        <button
+          type="button"
+          class="gallery-item group relative aspect-[3/4] bg-bg-secondary rounded-lg overflow-hidden border border-border
+                 hover:border-text-muted/40 transition-colors
+                 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+          data-index={idx}
+          data-src={img.src}
+          data-caption={img.caption || ''}
+          aria-label={`View image ${idx + 1}${img.caption ? ': ' + img.caption : ''}`}
+        >
+          <img
+            src={img.src}
+            alt={img.caption || `${figureName} image ${idx + 1}`}
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+            decoding="async"
+          />
+        </button>
+      ))}
+    </div>
+  )}
+
+  <!-- Lightbox overlay -->
+  <dialog id="lightbox" class="lightbox-dialog" aria-label="Image viewer">
+    <div class="lightbox-backdrop" data-lightbox-close></div>
+    <div class="lightbox-content">
+      <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <button type="button" class="lightbox-prev" id="lightbox-prev" aria-label="Previous image">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="lightbox-image-wrapper">
+        <img id="lightbox-img" src="" alt="" class="lightbox-image" />
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+      </div>
+      <button type="button" class="lightbox-next" id="lightbox-next" aria-label="Next image">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </dialog>
+</div>
+
+<style>
+  .lightbox-dialog {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    background: transparent;
+    border: none;
+    padding: 0;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .lightbox-dialog[open] {
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.92);
+  }
+  .lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+  }
+  .lightbox-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+  }
+  .lightbox-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90vw;
+    max-height: 90dvh;
+  }
+  .lightbox-image {
+    max-width: 90vw;
+    max-height: 80dvh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  .lightbox-caption {
+    color: #9d9dab;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 8px;
+    min-height: 20px;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: #e8e8ed;
+    padding: 8px;
+    border-radius: 8px;
+    z-index: 2;
+    transition: background 0.15s;
+  }
+  .lightbox-close:hover {
+    background: rgba(255,255,255,0.08);
+  }
+  .lightbox-prev,
+  .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e8e8ed;
+    padding: 12px 8px;
+    border-radius: 8px;
+    z-index: 2;
+    transition: background 0.15s;
+  }
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+  .lightbox-prev:hover,
+  .lightbox-next:hover {
+    background: rgba(255,255,255,0.08);
+  }
+  @media (max-width: 640px) {
+    .lightbox-prev, .lightbox-next {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const gallery = document.getElementById('gallery-grid');
+  const dialog = document.getElementById('lightbox') as HTMLDialogElement | null;
+  const img = document.getElementById('lightbox-img') as HTMLImageElement | null;
+  const caption = document.getElementById('lightbox-caption');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+
+  if (!gallery || !dialog || !img) throw new Error('Lightbox elements not found');
+
+  const items = Array.from(gallery.querySelectorAll('.gallery-item')) as HTMLElement[];
+  let currentIndex = 0;
+
+  function show(index: number) {
+    currentIndex = index;
+    const item = items[index];
+    if (!item) return;
+    img!.src = item.dataset.src || '';
+    img!.alt = item.dataset.caption || '';
+    if (caption) caption.textContent = item.dataset.caption || '';
+    if (prevBtn) (prevBtn as HTMLButtonElement).style.visibility = index > 0 ? 'visible' : 'hidden';
+    if (nextBtn) (nextBtn as HTMLButtonElement).style.visibility = index < items.length - 1 ? 'visible' : 'hidden';
+  }
+
+  gallery.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.gallery-item') as HTMLElement | null;
+    if (!btn) return;
+    const idx = parseInt(btn.dataset.index || '0', 10);
+    show(idx);
+    dialog.showModal();
+  });
+
+  dialog.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.hasAttribute('data-lightbox-close')) {
+      dialog.close();
+    }
+  });
+
+  dialog.addEventListener('close', () => {
+    img!.src = '';
+  });
+
+  prevBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentIndex > 0) show(currentIndex - 1);
+  });
+
+  nextBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentIndex < items.length - 1) show(currentIndex + 1);
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (!dialog.open) return;
+    if (e.key === 'Escape') dialog.close();
+    if (e.key === 'ArrowLeft' && currentIndex > 0) show(currentIndex - 1);
+    if (e.key === 'ArrowRight' && currentIndex < items.length - 1) show(currentIndex + 1);
+  });
+
+  // Mobile swipe
+  let touchStartX = 0;
+  dialog.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+
+  dialog.addEventListener('touchend', (e) => {
+    const delta = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(delta) > 60) {
+      if (delta > 0 && currentIndex > 0) show(currentIndex - 1);
+      if (delta < 0 && currentIndex < items.length - 1) show(currentIndex + 1);
+    }
+  });
+</script>

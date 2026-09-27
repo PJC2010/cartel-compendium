@@ -1,0 +1,56 @@
+[
+  {
+    "id": "los-chapitos",
+    "cartel_id": "sinaloa",
+    "name": "Los Chapitos",
+    "leader": "Iván Archivaldo Guzmán Salazar",
+    "description": "The faction controlled by Joaquín 'El Chapo' Guzmán's sons. Following their father's extradition to the United States in 2017, Los Chapitos assumed control of a significant portion of the Sinaloa Cartel's operations, particularly the synthetic drug trade. The faction has been characterized by its embrace of fentanyl production and trafficking, as well as its use of heavily armed security forces.",
+    "image": "/images/factions/los-chapitos.jpg",
+    "members": ["ivan-guzman", "jesus-alfredo-guzman", "ovidio-guzman"]
+  },
+  {
+    "id": "los-mayos",
+    "cartel_id": "sinaloa",
+    "name": "Los Mayos",
+    "leader": "Ismael 'El Mayo' Zambada García",
+    "description": "The faction loyal to Ismael 'El Mayo' Zambada, the co-founder and longtime strategist of the Sinaloa Cartel. Los Mayos have traditionally focused on cocaine trafficking routes and maintain strong connections in South America. Following Zambada's arrest in July 2024, the faction has faced internal power struggles.",
+    "image": "/images/factions/los-mayos.jpg",
+    "members": ["el-mayo-zambada", "mayo-flaco"]
+  },
+  {
+    "id": "cjng-elite-group",
+    "cartel_id": "cjng",
+    "name": "CJNG Elite Group",
+    "leader": "Nemesio 'El Mencho' Oseguera Cervantes",
+    "description": "The core operational unit of CJNG, directly overseen by El Mencho. This group coordinates the cartel's most sensitive operations including high-value drug shipments, territorial defense, and targeted strikes against rivals. Members of the elite group undergo military-style training and are equipped with advanced weaponry.",
+    "image": "/images/factions/cjng-elite.jpg",
+    "members": ["el-mencho", "el-jardinero"]
+  },
+  {
+    "id": "cjng-nueva-plaza",
+    "cartel_id": "cjng",
+    "name": "Nueva Plaza Cartel",
+    "leader": "Carlos Enrique Sánchez Martínez",
+    "description": "Originally formed as a CJNG splinter group in 2018, Nueva Plaza has engaged in a violent internal war with CJNG for control of Guadalajara and the surrounding state of Jalisco. Despite the split, the group retains CJNG-style operational methods and maintains connections to former allies.",
+    "image": "/images/factions/nueva-plaza.jpg",
+    "members": ["el-cholo"]
+  },
+  {
+    "id": "cdg-matamoros",
+    "cartel_id": "gulf",
+    "name": "CDG Matamoros",
+    "leader": "José Alfredo Cárdenas Martínez",
+    "description": "The Matamoros-based faction of the Gulf Cartel controlling the historic Tamaulipas corridor. This faction has maintained a loose alliance with some remnants of Los Zetas while fighting against other Gulf Cartel splinters and the Northeast Cartel for control of the region.",
+    "image": "/images/factions/cdg-matamoros.jpg",
+    "members": ["el-conta"]
+  },
+  {
+    "id": "cdg-escorpiones",
+    "cartel_id": "gulf",
+    "name": "Los Escorpiones",
+    "leader": "Unknown",
+    "description": "An armed wing and enforcement group within the Gulf Cartel infrastructure. Los Escorpiones serve as the cartel's primary hit squad in the Matamoros-Reynosa corridor and have been involved in numerous high-profile shootouts with Mexican security forces.",
+    "image": "/images/factions/escorpiones.jpg",
+    "members": ["escorpion-1"]
+  }
+]

@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CartelHero from '../../components/CartelHero.astro';
+import FactionCard from '../../components/FactionCard.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getCartels, getCartel, getFactionsByCartel } from '../../lib/data';
+
+export function getStaticPaths() {
+  return getCartels().map((c) => ({ params: { id: c.id } }));
+}
+
+const { id } = Astro.params;
+const cartel = getCartel(id as string);
+
+if (!cartel) {
+  return Astro.redirect('/404');
+}
+
+const factions = getFactionsByCartel(cartel.id);
+---
+
+<Layout title={cartel.name}>
+  <Breadcrumbs
+    items={[
+      { label: 'Home', href: '/' },
+      { label: cartel.name },
+    ]}
+  />
+  <CartelHero cartel={cartel} />
+
+  <section class="max-w-6xl mx-auto px-4 py-8">
+    <h2 class="font-display font-semibold text-xl text-text-primary mb-4">
+      Factions
+    </h2>
+    {factions.length === 0 ? (
+      <p class="text-sm text-text-muted italic">No factions recorded for this cartel.</p>
+    ) : (
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {factions.map((faction) => (
+          <FactionCard faction={faction} />
+        ))}
+      </div>
+    )}
+  </section>
+</Layout>
